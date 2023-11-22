@@ -7,10 +7,11 @@ const bookContext = createContext({
 
 export function BooksContextProvider(props) {
     const [library, setLibrary] = useState(booksData.library)
+    const [filteredLibrary, setFilteredLibrary] = useState([])
     const [listBooks, setListBooks] = useState([])
     const [readList, setReadList] = useState([])
     const [openList, setOpenList] = useState()
-    console.log(openList)
+
 
     function addItem(book) {
         if (listBooks.some(b => b.ISBN === book.ISBN)) return
@@ -47,8 +48,19 @@ export function BooksContextProvider(props) {
         setListBooks(newBookList)
     }
 
+    function filterByGenre(genre) {
+        setFilteredLibrary(library)
+        if (genre === 'all') return
+        const newLibrary = library.filter(({ book }) => book.genre === genre)
+        setFilteredLibrary(newLibrary)
+    }
+
+    function filterByMaxPages(pages) {
+
+    }
+
     return (
-        <bookContext.Provider value={{ readList, addItem, removeItem, listBooks, openList, setOpenList, library, readItem }}>
+        <bookContext.Provider value={{ readList, addItem, removeItem, listBooks, openList, setOpenList, library, readItem, filterByGenre, filteredLibrary }}>
             {props.children}
         </bookContext.Provider>
     )

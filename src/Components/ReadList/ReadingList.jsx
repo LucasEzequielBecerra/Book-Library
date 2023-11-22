@@ -5,7 +5,6 @@ import BookReadCard from "./BookReadCard"
 
 const ReadingList = () => {
     const { openList, listBooks, removeItem, readItem, readList } = useContext(bookContext)
-    console.log(readList)
     return (
         <aside className={openList ? 'absolute z-10 right-0 top-80 bg-red-800 p-5 pr-10 flex flex-col w-[600px] ' : 'none'}>
             <section className="w-full">

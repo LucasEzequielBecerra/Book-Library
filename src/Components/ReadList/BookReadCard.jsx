@@ -1,7 +1,6 @@
-import React from 'react'
-import { FaCheck, FaRegTrashAlt } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa"
 
-const BookListCard = ({ book, removeBook, readItem }) => {
+const BookReadCard = ({ book, removeBook }) => {
     return (
         <article className="flex gap-5 m-2 bg-red-500/20 p-3 ">
             <picture className="w-28">
@@ -15,15 +14,10 @@ const BookListCard = ({ book, removeBook, readItem }) => {
             <div className="flex flex-col items-center justify-between w-32 ">
                 <div className="flex gap-3 pb-3">
                     <button onClick={() => { removeBook(book.ISBN) }} ><FaRegTrashAlt size='1.4em' /></button>
-                    <button onClick={() => { readItem(book) }}><FaCheck size='1.4em' /> </button>
-                </div>
-                <div>
-                    <p className='text-center pb-2 text-sm'>Pages read</p>
-                    <p className="text-center"><span className="text-black">10</span> / {book.pages}</p>
                 </div>
             </div>
         </article>
     )
 }
 
-export default BookListCard
+export default BookReadCard

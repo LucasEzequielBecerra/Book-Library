@@ -4,7 +4,7 @@ import bookContext from "../../context/bookListContext"
 const BookCard = ({ book }) => {
   const { addItem } = useContext(bookContext)
   return (
-    <article className={!book.inList ? 'gap-3 h-full w-52 flex flex-col justify-between items-center p-1 rounded-md' : 'none'}>
+    <article className={`gap-3 h-full w-52 flex flex-col justify-between items-center p-1 rounded-md ${!book.inList ? 'opacity-100' : 'opacity-10'}`}>
       <picture className="p-3 bg-gray-800 rounded-md">
         <img className="h-64" src={book.cover} alt="" />
       </picture>

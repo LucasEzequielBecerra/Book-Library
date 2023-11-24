@@ -2,24 +2,19 @@ import { useContext, useEffect, useState } from "react"
 import bookContext from "../../context/bookListContext"
 
 const BooksFilters = () => {
-  const { filterByGenre } = useContext(bookContext)
-
-  const [genre, setGenre] = useState('all')
-  const [pages, setPages] = useState(1200)
+  const { updateFilters, filters } = useContext(bookContext)
+  console.log(filters)
 
   function handleGenreChange(event) {
-    const prevGenre = event.target.value
-    setGenre(prevGenre)
+    updateFilters('genre', event.target.value)
   }
 
   function handleRangeChange(e) {
-    setPages(e.target.value)
+    updateFilters('pages', e.target.value)
   }
   useEffect(() => {
-    filterByGenre(genre)
 
-  }, [genre])
-
+  }, [])
 
 
   return (
@@ -32,7 +27,7 @@ const BooksFilters = () => {
           <label htmlFor="filterGenre" className="flex flex-col">
             Filter by genre:
           </label>
-          <select className="w-full p-1 bg-gray-800" name='filterGenre' value={genre} type="checkbox" onChange={handleGenreChange}>
+          <select className="w-full p-1 bg-gray-800" name='filterGenre' value={filters.genre} type="checkbox" onChange={handleGenreChange}>
             <option value="all" >All</option>
             <option value="Fantasía" >Fantasy</option>
             <option value="Terror" >Terror</option>
@@ -42,9 +37,10 @@ const BooksFilters = () => {
         </div>
         <div className="flex flex-col">
           <label htmlFor="filterPages">
-            Filter by max pages:
+            Filter by max pages
           </label>
-          <input className="text-black outline-none " min={43} max={1200} value={pages} onChange={handleRangeChange} name="filterPages" type="range" />
+          <input className="text-black outline-none " min={43} max={1201} value={filters.pages} onChange={handleRangeChange} name="filterPages" type="range" />
+          <p>Pages: {filters.pages}</p>
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-async function getBooks(){
+async function getBooks() {
     try {
         const res = await fetch('../lib/books.json')
         const books = res.json()

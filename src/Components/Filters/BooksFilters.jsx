@@ -3,7 +3,6 @@ import bookContext from "../../context/bookListContext"
 
 const BooksFilters = () => {
   const { updateFilters, filters } = useContext(bookContext)
-  console.log(filters)
 
   function handleGenreChange(event) {
     updateFilters('genre', event.target.value)

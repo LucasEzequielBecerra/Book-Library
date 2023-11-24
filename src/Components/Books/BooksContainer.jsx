@@ -4,20 +4,20 @@ import bookContext from "../../context/bookListContext"
 
 const BooksContainer = () => {
 
-  const { setOpenList, filteredLibrary } = useContext(bookContext)
+  const { setOpenList, filteredLibrary, listBooks } = useContext(bookContext)
 
   return (
     <section className={`mt-10 gap-10 flex flex-col`} >
       <div className="flex gap-5 border-b">
         <div>
-          Books avaliable
+          Books avaliable {filteredLibrary.length}
         </div>
         <div>
-          <button onClick={() => setOpenList(true)}>Read list</button>
+          <button onClick={() => setOpenList(true)}>Read list {listBooks.length}</button>
         </div>
       </div>
       <div className="flex gap-5 flex-wrap">
-        {filteredLibrary.map(books => <BookCard key={books.book.ISBN} book={books.book} />)}
+        {filteredLibrary.map(books => <BookCard key={books.ISBN} book={books} />)}
       </div>
     </section>
   )

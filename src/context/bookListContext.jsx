@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import { booksData } from "../services/getBooks";
 
 const initialFilters = {
-  pages: 1201,
+  pages: 1200,
   genre: 'all'
 }
 
@@ -11,9 +11,11 @@ const bookContext = createContext({
   filters: initialFilters
 })
 
+const libraryData = booksData.library.map(book => book.book)
+
 
 export function BooksContextProvider(props) {
-  const [library, setLibrary] = useState(booksData.library)
+  const [library, setLibrary] = useState(libraryData)
   const [filters, setFilters] = useState(initialFilters)
   const [listBooks, setListBooks] = useState([])
   const [readList, setReadList] = useState([])
@@ -30,9 +32,10 @@ export function BooksContextProvider(props) {
     newListBooks.push(...listBooks, book)
     setListBooks(newListBooks)
 
-    const indexLibrary = library.findIndex(b => b.book.ISBN === book.ISBN)
+    const indexLibrary = library.findIndex(b => b.ISBN === book.ISBN)
     library.splice(indexLibrary, 1)
-    library.push({ book: { ...book, inList: true } })
+    library.push({ ...book, inList: true })
+    console.log(library)
     setLibrary(library)
 
   }
@@ -44,8 +47,8 @@ export function BooksContextProvider(props) {
     setReadList(newReadList)
 
     const newLibrary = library.map(b => {
-      if (b.book.ISBN === id) {
-        return { book: { ...b.book, inList: false } }
+      if (b.ISBN === id) {
+        return { book: { ...b, inList: false } }
       }
       return b
     })
@@ -61,13 +64,22 @@ export function BooksContextProvider(props) {
     setListBooks(newBookList)
   }
 
-  const filteredLibrary = library.filter(({ book }) => {
+  const filteredLibrary = library.filter((book) => {
     const { pages, genre } = filters
     const matchPages = pages === 0 || book.pages <= pages
     const matchGenre = genre === 'all' || book.genre === genre
 
     return matchPages && matchGenre
   })
+
+  // const maxMinPages = library.reduce((prevBook, currentBook) => {
+  //   const currentPages = currentBook.pages
+  //   const maxPages = currentPages > prevBook.pages ? currentBook : prevBook
+  //   const minPages = currentPages < prevBook.pages ? currentBook : prevBook
+  //   return
+  // }, library[0])
+
+  // console.log(maxMinPages)
 
 
   return (

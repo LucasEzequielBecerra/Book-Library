@@ -3,7 +3,8 @@ import { booksData } from "../services/getBooks";
 
 const initialFilters = {
   pages: 1200,
-  genre: 'all'
+  genre: 'all',
+  search: ''
 }
 
 const bookContext = createContext({
@@ -65,25 +66,31 @@ export function BooksContextProvider(props) {
   }
 
   const filteredLibrary = library.filter((book) => {
-    const { pages, genre } = filters
+    const { pages, genre, search } = filters
     const matchPages = pages === 0 || book.pages <= pages
     const matchGenre = genre === 'all' || book.genre === genre
+    const matchSearch = !search || book.title.toLowerCase().includes(search.toLowerCase())
 
-    return matchPages && matchGenre
+    return matchPages && matchGenre && matchSearch
   })
 
-  // const maxMinPages = library.reduce((prevBook, currentBook) => {
-  //   const currentPages = currentBook.pages
-  //   const maxPages = currentPages > prevBook.pages ? currentBook : prevBook
-  //   const minPages = currentPages < prevBook.pages ? currentBook : prevBook
-  //   return
-  // }, library[0])
 
-  // console.log(maxMinPages)
+  const maxPages = library.reduce((prevBook, currentBook) => {
+    return currentBook.pages > prevBook.pages ? currentBook : prevBook
+  })
+
+  const minPages = library.reduce((prevBook, currentBook) => {
+    return currentBook.pages < prevBook.pages ? currentBook : prevBook
+  })
+
+  let maxMinPages = {
+    max: maxPages.pages,
+    min: minPages.pages
+  }
 
 
   return (
-    <bookContext.Provider value={{ readList, addItem, removeItem, listBooks, openList, setOpenList, library, readItem, filteredLibrary, updateFilters, filters }}>
+    <bookContext.Provider value={{ readList, addItem, removeItem, listBooks, openList, setOpenList, library, readItem, filteredLibrary, updateFilters, filters, maxMinPages }}>
       {props.children}
     </bookContext.Provider>
   )

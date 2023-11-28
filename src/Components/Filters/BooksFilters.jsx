@@ -1,25 +1,13 @@
 import { useContext } from "react"
 import bookContext from "../../context/bookListContext"
 import { FaSearch } from "react-icons/fa";
+import useFilters from "../../hooks/useFilters";
 
 const BooksFilters = () => {
-  const { updateFilters, filters, maxMinPages } = useContext(bookContext)
+  const { filters, maxMinPages } = useContext(bookContext)
+  const { handleGenreChange, handleRangeChange, handleSearch } = useFilters()
 
 
-  function handleGenreChange(event) {
-    updateFilters('genre', event.target.value)
-  }
-
-  function handleRangeChange(event) {
-    updateFilters('pages', event.target.value)
-  }
-
-  function handleSearch(event) {
-    console.log(event.target.value)
-    setTimeout(() => {
-      updateFilters('search', event.target.value)
-    }, 1000)
-  }
 
 
   return (
@@ -32,7 +20,7 @@ const BooksFilters = () => {
           <label htmlFor="filterGenre" className="flex flex-col">
             Filter by genre:
           </label>
-          <select className="w-full p-1 bg-gray-800" name='filterGenre' value={filters.genre} type="checkbox" onChange={handleGenreChange}>
+          <select className="w-full p-1 bg-gray-800" name='filterGenre' value={filters.genre} type="checkbox" onChange={handleGenreChange} >
             <option value="all" >All</option>
             <option value="Fantasía" >Fantasy</option>
             <option value="Terror" >Terror</option>

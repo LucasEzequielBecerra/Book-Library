@@ -1,5 +1,8 @@
 import { createContext, useState } from "react";
 import { booksData } from "../services/getBooks";
+import { booksAvailable, maxMinPages } from "../utils/getManMixPages";
+import useLocalStorage from "../hooks/useLocalStorage";
+
 
 const initialFilters = {
   pages: 1200,
@@ -16,10 +19,10 @@ const libraryData = booksData.library.map(book => book.book)
 
 
 export function BooksContextProvider(props) {
-  const [library, setLibrary] = useState(libraryData)
+  const [library, setLibrary] = useLocalStorage('library', libraryData)
   const [filters, setFilters] = useState(initialFilters)
-  const [listBooks, setListBooks] = useState([])
-  const [readList, setReadList] = useState([])
+  const [readList, setReadList] = useLocalStorage('readList', [])
+  const [alreadyReadList, setAlreadyReadList] = useLocalStorage('alreadyReadList', [])
   const [openList, setOpenList] = useState()
 
 
@@ -28,28 +31,26 @@ export function BooksContextProvider(props) {
   }
 
   function addItem(book) {
-    if (listBooks.some(b => b.ISBN === book.ISBN)) return
-    const newListBooks = []
-    newListBooks.push(...listBooks, book)
-    setListBooks(newListBooks)
+    if (readList.some(b => b.ISBN === book.ISBN)) return
+    const newReadList = []
+    newReadList.push(...readList, book)
+    setReadList(newReadList)
 
     const indexLibrary = library.findIndex(b => b.ISBN === book.ISBN)
     library.splice(indexLibrary, 1)
     library.push({ ...book, inList: true })
-    console.log(library)
     setLibrary(library)
-
   }
 
   function removeItem(id) {
-    const newBooksList = listBooks.filter(book => book.ISBN !== id)
-    setListBooks(newBooksList)
     const newReadList = readList.filter(book => book.ISBN !== id)
     setReadList(newReadList)
+    const newAlreadyReadList = alreadyReadList.filter(book => book.ISBN !== id)
+    setAlreadyReadList(newAlreadyReadList)
 
     const newLibrary = library.map(b => {
       if (b.ISBN === id) {
-        return { book: { ...b, inList: false } }
+        return { ...b, inList: false }
       }
       return b
     })
@@ -57,12 +58,12 @@ export function BooksContextProvider(props) {
   }
 
   function readItem(book) {
-    const newReadList = readList
-    const readBook = listBooks.find(b => b.ISBN === book.ISBN)
-    newReadList.push(readBook)
-    setReadList(newReadList)
-    const newBookList = listBooks.filter(b => b.ISBN !== book.ISBN)
-    setListBooks(newBookList)
+    const newAlreadyReadList = alreadyReadList
+    const readBook = readList.find(b => b.ISBN === book.ISBN)
+    newAlreadyReadList.push(readBook)
+    setAlreadyReadList(newAlreadyReadList)
+    const newBookList = readList.filter(b => b.ISBN !== book.ISBN)
+    setReadList(newBookList)
   }
 
   const filteredLibrary = library.filter((book) => {
@@ -74,23 +75,10 @@ export function BooksContextProvider(props) {
     return matchPages && matchGenre && matchSearch
   })
 
-
-  const maxPages = library.reduce((prevBook, currentBook) => {
-    return currentBook.pages > prevBook.pages ? currentBook : prevBook
-  })
-
-  const minPages = library.reduce((prevBook, currentBook) => {
-    return currentBook.pages < prevBook.pages ? currentBook : prevBook
-  })
-
-  let maxMinPages = {
-    max: maxPages.pages,
-    min: minPages.pages
-  }
-
+  const numberOfBooksAvailable = booksAvailable(filteredLibrary, readList, alreadyReadList)
 
   return (
-    <bookContext.Provider value={{ readList, addItem, removeItem, listBooks, openList, setOpenList, library, readItem, filteredLibrary, updateFilters, filters, maxMinPages }}>
+    <bookContext.Provider value={{ alreadyReadList, addItem, removeItem, readList, openList, setOpenList, library, readItem, filteredLibrary, updateFilters, filters, maxMinPages, numberOfBooksAvailable }}>
       {props.children}
     </bookContext.Provider>
   )

@@ -11,7 +11,7 @@ const ReadingList = () => {
                 <div className="py-2 border-b mx-2">
                     <h2 className="text-2xl">Books for read</h2>
                 </div>
-                <div className="flex flex-col">
+                <div data-testid="container-read-books" className="flex flex-col">
                     {
                         readList.length === 0 ?
                             <p className="mx-2 py-5 font-bold text-black">You haven't added any books to your list yet.</p> :
@@ -20,11 +20,11 @@ const ReadingList = () => {
                 </div>
             </section>
             {alreadyReadList.length !== 0 &&
-                <section>
+                <section >
                     <div className="py-2 border-b mx-2">
                         <h2 className="text-2xl">Reads books</h2>
                     </div>
-                    <div className="flex flex-col">
+                    <div data-testid="container-already-read-books" className="flex flex-col">
                         {
                             alreadyReadList.map(book => <BookReadCard key={book.ISBN} book={book} removeBook={removeItem} readItem={readItem} />)
                         }

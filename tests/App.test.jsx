@@ -12,16 +12,46 @@ describe('<App/>', () => {
         const allCards = screen.getAllByRole('article')
         expect(allCards).toBeDefined()
 
-        const firstCard = allCards[0]
+        const firstCardBook = allCards[0]
+        const secondCardBook = allCards[1]
+        expect(firstCardBook && secondCardBook).toBeDefined()
 
-        const addButton = firstCard.querySelector('button')
-        expect(addButton).toBeDefined()
+        const titleBook = firstCardBook.querySelector('h2 span').textContent
 
-        await user.click(button)
+        const addButton1 = firstCardBook.querySelector('button')
+        expect(addButton1).toBeDefined()
+        const addButton2 = secondCardBook.querySelector('button')
+        expect(addButton2).toBeDefined()
 
-        expect(firstCard.className).toContain('opacity-10')
+        await user.click(addButton1)
+        await user.click(addButton2)
 
+        expect(firstCardBook.className).toContain('opacity-10')
 
+        const toReadListButton = screen.getByRole('button', { name: 'toList' })
+        expect(toReadListButton).toBeDefined()
+
+        await user.click(toReadListButton)
+
+        const readList = document.querySelector('aside')
+        expect(readList.className).not.toContain('none')
+
+        const sectionRead = screen.getByTestId('container-read-books')
+        expect(sectionRead).toBeDefined()
+        expect(sectionRead.childNodes.length).toBe(2)
+
+        const readCard = sectionRead.querySelector('article')
+        expect(readCard).toBeDefined()
+
+        const titleReadCard = readCard.querySelector('h3').textContent
+        expect(titleReadCard).toBe(titleBook)
+
+        const removeReadButton = readCard.querySelector('button[aria-label="remove-read-button"]')
+        expect(removeReadButton).toBeDefined()
+
+        await user.click(removeReadButton)
+
+        expect(sectionRead.childNodes.length).toBe(1)
 
     });
 })

@@ -13,7 +13,7 @@ const BooksContainer = () => {
           Books available {numberOfBooksAvailable}
         </div>
         <div>
-          <button onClick={() => setOpenList(true)}>Read list {readList.length}</button>
+          <button aria-label="toList" onClick={() => setOpenList(true)}>Read list {readList.length}</button>
         </div>
       </div>
       <div className="flex gap-5 flex-wrap">

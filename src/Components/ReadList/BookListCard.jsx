@@ -14,8 +14,8 @@ const BookListCard = ({ book, removeBook, readItem }) => {
             </div>
             <div className="flex flex-col items-center justify-between w-32 ">
                 <div className="flex gap-3 pb-3">
-                    <button onClick={() => { removeBook(book.ISBN) }} ><FaRegTrashAlt size='1.4em' /></button>
-                    <button onClick={() => { readItem(book) }}><FaCheck size='1.4em' /> </button>
+                    <button aria-label='remove-read-button' onClick={() => { removeBook(book.ISBN) }} ><FaRegTrashAlt size='1.4em' /></button>
+                    <button aria-label='already-read-button' onClick={() => { readItem(book) }}><FaCheck size='1.4em' /> </button>
                 </div>
                 <div>
                     <p className='text-center pb-2 text-sm'>Pages read</p>

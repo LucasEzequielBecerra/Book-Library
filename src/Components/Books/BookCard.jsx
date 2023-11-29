@@ -9,9 +9,9 @@ const BookCard = ({ book }) => {
         <img className="h-64" src={book.cover} alt="" />
       </picture>
       <div className="w-full min-h-[80px]">
-        <h3 className="truncate">
+        <h2 className="truncate">
           Title: <span className="text-red-400">{book.title}</span>
-        </h3>
+        </h2>
         <h3>
           Author: <span className="text-red-400">{book.author.name}</span>
         </h3>

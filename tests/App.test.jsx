@@ -2,8 +2,16 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, test } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import App from "../src/App";
+import { getBooks } from "../src/services/getBooks";
 
 describe('<App/>', () => {
+
+    // test('fetch json', async () => {
+    //     const data = await getBooks()
+    //     console.log('responseeeeeeeeeeee', data)
+    //     expect(data).toBeDefined()
+    // })
+
     test('should work', async () => {
         const user = userEvent.setup()
 

@@ -1,6 +1,5 @@
 import { booksData } from "../services/getBooks"
 
-
 const libraryData = booksData.library.map(book => book.book)
 
 const maxPages = libraryData.reduce((prevBook, currentBook) => {

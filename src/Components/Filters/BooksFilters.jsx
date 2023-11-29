@@ -1,12 +1,10 @@
 import { useContext } from "react"
 import bookContext from "../../context/bookListContext"
-import { FaSearch } from "react-icons/fa";
 import useFilters from "../../hooks/useFilters";
 
 const BooksFilters = () => {
   const { filters, maxMinPages } = useContext(bookContext)
   const { handleGenreChange, handleRangeChange, handleSearch } = useFilters()
-
 
 
 

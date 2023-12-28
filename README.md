@@ -17,7 +17,7 @@ OR
 #Download ZIP
 
 # Go into the repository
-$ cd Amazing-Movie-Searcher
+$ cd Book-Library
 
 # Install dependencies
 $ npm install

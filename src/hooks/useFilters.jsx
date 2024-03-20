@@ -6,7 +6,8 @@ const useFilters = () => {
 
 
     function handleGenreChange(event) {
-        updateFilters('genre', event.target.value)
+        console.log(event.target.name)
+        updateFilters('genre', event.target.name)
     }
 
     function handleRangeChange(event) {

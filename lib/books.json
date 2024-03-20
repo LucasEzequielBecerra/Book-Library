@@ -15,7 +15,8 @@
                         "El Hobbit",
                         "El Silmarillion"
                     ]
-                }
+                },
+                "rating": 4.8
             }
         },
         {
@@ -34,7 +35,8 @@
                         "Tormenta de Espadas",
                         "Festín de Cuervos"
                     ]
-                }
+                },
+                "rating": 4.6
             }
         },
         {
@@ -53,7 +55,8 @@
                         "Harry Potter y el prisionero de Azkaban",
                         "Harry Potter y el cáliz de fuego"
                     ]
-                }
+                },
+                "rating": 4.9
             }
         },
         {
@@ -70,7 +73,8 @@
                     "otherBooks": [
                         "Rebelión en la granja"
                     ]
-                }
+                },
+                "rating": 4.7
             }
         },
         {
@@ -85,7 +89,8 @@
                 "author": {
                     "name": "Manel Loreiro",
                     "otherBooks": []
-                }
+                },
+                "rating": 4.5
             }
         },
         {
@@ -103,7 +108,8 @@
                         "El mesías de Dune",
                         "Hijos de Dune"
                     ]
-                }
+                },
+                "rating": 4.8
             }
         },
         {
@@ -121,7 +127,8 @@
                         "El restaurante del fin del mundo",
                         "La vida, el universo y todo lo demás"
                     ]
-                }
+                },
+                "rating": 4.9
             }
         },
         {
@@ -139,7 +146,8 @@
                         "Conde Cero",
                         "Mona Lisa Acelerada"
                     ]
-                }
+                },
+                "rating": 4.7
             }
         },
         {
@@ -157,7 +165,8 @@
                         "Crónicas marcianas",
                         "El hombre ilustrado"
                     ]
-                }
+                },
+                "rating": 4.5
             }
         },
         {
@@ -175,7 +184,8 @@
                         "Carrie",
                         "It"
                     ]
-                }
+                },
+                "rating": 4.6
             }
         },
         {
@@ -193,7 +203,8 @@
                         "La joya de las siete estrellas",
                         "La madriguera del gusano blanco"
                     ]
-                }
+                },
+                "rating": 4.4
             }
         },
         {
@@ -211,7 +222,27 @@
                         "El último hombre",
                         "Valperga"
                     ]
-                }
+                },
+                "rating": 4.3
+            }
+        },
+        {
+            "book": {
+                "title": "El psicoanalista",
+                "pages": 494,
+                "genre": "Suspenso",
+                "cover": "https://images.cdn1.buscalibre.com/fit-in/360x360/0e/eb/0eebbbd43e870b09fdacf443e16d25b3.jpg",
+                "synopsis": "Un psicoanalista recibe una amenaza anónima que pone su vida en peligro y lo lleva a una lucha desesperada por descubrir la identidad de su tormentor.",
+                "year": 2002,
+                "ISBN": "978-8498726103",
+                "author": {
+                    "name": "John Katzenbach",
+                    "otherBooks": [
+                        "La sombra",
+                        "La historia del loco"
+                    ]
+                },
+                "rating": 4.2
             }
         },
         {
@@ -229,7 +260,84 @@
                         "El horror de Dunwich",
                         "En las montañas de la locura"
                     ]
-                }
+                },
+                "rating": 4.2
+            }
+        },
+        {
+            "book": {
+                "title": "La chica del tren",
+                "pages": 496,
+                "genre": "Suspenso",
+                "cover": "https://images.cdn1.buscalibre.com/fit-in/360x360/97/9e/979eb2852ad897a3bfda2de4a7b5c806.jpg",
+                "synopsis": "Una mujer obsesionada con una pareja que ve desde el tren se involucra en una misteriosa desaparición que revela oscuros secretos.",
+                "year": 2015,
+                "ISBN": "978-8420677681",
+                "author": {
+                    "name": "Paula Hawkins",
+                    "otherBooks": [
+                        "En el agua",
+                        "Atrápame"
+                    ]
+                },
+                "rating": 4.0
+            }
+        },
+        {
+            "book": {
+                "title": "La verdad sobre el caso Harry Quebert",
+                "pages": 656,
+                "genre": "Suspenso",
+                "cover": "https://images.cdn3.buscalibre.com/fit-in/360x360/99/54/9954f7b737324b6354d6263b267b870c.jpg",
+                "synopsis": "Un joven escritor investiga un antiguo caso de asesinato y descubre secretos que podrían destruir a su mentor literario.",
+                "year": 2012,
+                "ISBN": "978-8425348149",
+                "author": {
+                    "name": "Joël Dicker",
+                    "otherBooks": [
+                        "Los últimos días de nuestros padres",
+                        "El libro de los Baltimore"
+                    ]
+                },
+                "rating": 4.5
+            }
+        },
+        {
+            "book": {
+                "title": "El extraño caso del Dr. Jekyll y Mr. Hyde",
+                "pages": 144,
+                "genre": "Suspenso",
+                "cover": "https://images.cdn1.buscalibre.com/fit-in/360x360/05/43/0543bb5b1db0dfb747f864fdbd9c84a2.jpg",
+                "synopsis": "Un abogado investiga el vínculo entre el respetable Dr. Jekyll y el siniestro Mr. Hyde, descubriendo una historia de transformación y terror.",
+                "year": 1886,
+                "ISBN": "978-8439723818",
+                "author": {
+                    "name": "Robert Louis Stevenson",
+                    "otherBooks": [
+                        "La isla del tesoro",
+                        "La flecha negra"
+                    ]
+                },
+                "rating": 4.3
+            }
+        },
+        {
+            "book": {
+                "title": "Misery",
+                "pages": 320,
+                "genre": "Suspenso",
+                "cover": "https://images.cdn3.buscalibre.com/fit-in/360x360/87/ca/87caa062cba78a9fe0746a4e6ad6d009.jpg",
+                "synopsis": "Un famoso escritor es rescatado por una fan obsesiva después de un accidente, pero su aparentemente hospitalaria anfitriona pronto se revela como una captora sádica.",
+                "year": 1987,
+                "ISBN": "978-0451169525",
+                "author": {
+                    "name": "Stephen King",
+                    "otherBooks": [
+                        "Carrie",
+                        "It"
+                    ]
+                },
+                "rating": 4.2
             }
         }
     ]

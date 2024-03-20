@@ -1,17 +1,18 @@
-import React from 'react'
-import { booksData } from '../../services/getBooks'
+import React, { useContext } from 'react'
 import BookCard from '../Books/BookCard'
+import bookContext from "../../context/bookListContext"
+
 
 const HomeHeader = () => {
-    const booksInTendency = booksData.library.slice(0,5)
-    console.log(booksInTendency)
+  const {libraryData} = useContext(bookContext)
+    const booksInTendency = libraryData.slice(0,4)
   return (
-    <header className='bg-[#E5E0FF] rounded-br-full w-full'>
-        <div className='w-4/5 mx-auto'>
-            <h2 className='text-5xl font-bold'>This are a few recommendations for you ...</h2>
+    <header className='bg-[#E5E0FF] rounded-br-[15rem] w-full pt-5'>
+        <div className='w-9/12 mx-auto mb-10'>
+            <h2 className='text-[4rem] tracking-wider font-semibold'>This are a few recommendations for you...</h2>
         </div>
-        <div className='w-full h-min'>
-            {booksInTendency.forEach(book => <BookCard book={book.book}/>)}
+        <div className='flex  w-4/5 mx-auto gap-24 pb-24'>
+            {booksInTendency.map(book => <BookCard key={book.ISBN} book={book}/>)}
         </div>
     </header>
   )

@@ -17,9 +17,11 @@ const bookContext = createContext({
 
 const libraryData = booksData.library.map(book => book.book)
 
+console.log(libraryData)
 
 export function BooksContextProvider(props) {
   const [library, setLibrary] = useLocalStorage('library', libraryData)
+  console.log(library)
   const [filters, setFilters] = useState(initialFilters)
   const [readList, setReadList] = useLocalStorage('readList', [])
   const [alreadyReadList, setAlreadyReadList] = useLocalStorage('alreadyReadList', [])
@@ -74,11 +76,12 @@ export function BooksContextProvider(props) {
 
     return matchPages && matchGenre && matchSearch
   })
+  console.log(filteredLibrary)
 
   const numberOfBooksAvailable = booksAvailable(filteredLibrary, readList, alreadyReadList)
 
   return (
-    <bookContext.Provider value={{ alreadyReadList, addItem, removeItem, readList, openList, setOpenList, library, readItem, filteredLibrary, updateFilters, filters, maxMinPages, numberOfBooksAvailable }}>
+    <bookContext.Provider value={{ alreadyReadList, addItem, removeItem, readList, openList, setOpenList, library, readItem, filteredLibrary, updateFilters, filters, maxMinPages, numberOfBooksAvailable,libraryData }}>
       {props.children}
     </bookContext.Provider>
   )

@@ -6,7 +6,6 @@ const BooksContainer = () => {
 
   const { setOpenList, filteredLibrary, readList, numberOfBooksAvailable } = useContext(bookContext)
 
-  console.log(filteredLibrary)
   return (
     <section className={`mt-10 gap-10 flex flex-col`} >
       {/* <div className="flex gap-5 border-b">

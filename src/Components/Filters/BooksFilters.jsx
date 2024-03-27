@@ -21,7 +21,7 @@ const BooksFilters = () => {
       ">Find your favorite books </h2>
       <div className="flex justify-between items-center w-4/5"> 
         <div className="flex items-center gap-4">
-          <input className="p-2 rounded-full text-[#F5F5F5] placeholder:text-[#F5F5F5] outline-none bg-[#4C60FF]" type="text" placeholder="Harry Potter, El principito ..." onChange={handleSearch} />
+          <input className="p-3 w-2/4 rounded-full text-[#F5F5F5] placeholder:text-[#F5F5F5] outline-none bg-[#4C60FF]" type="text" placeholder="Harry Potter, El principito ..." onChange={handleSearch} />
         </div>
         <div className="flex flex-col ">
             <label className="text-lg" htmlFor="filterPages">
@@ -31,12 +31,12 @@ const BooksFilters = () => {
             <p className="text-sm">Pages: {filters.pages}</p>
         </div>
       </div>
-      <div className="flex gap-10 justify-center mt-10">
-        <button onClick={(e)=> handleGenreChange(e)} name="Fantasía">Fantasy</button>
-        <button onClick={(e)=> handleGenreChange(e)} name="Ciencia ficción">Fiction Science</button>
-        <button onClick={(e)=> handleGenreChange(e)} name="Zombies">Zombies</button>
-        <button onClick={(e)=> handleGenreChange(e)} name="Suspenso">Suspense</button>
-        <button onClick={(e)=> handleGenreChange(e)} name="Terror">Terror</button>
+      <div className="flex gap-10 justify-center mt-10 [&>button]:w-[296px] [&>button]:h-[60px] [&>button]:text-2xl ">
+        <button className="hover:scale-105 transition-all hover:bg-[#4c60ff]/80" onClick={(e)=> handleGenreChange(e)} name="Fantasía">Fantasy</button>
+        <button className="hover:scale-105 transition-all hover:bg-[#4c60ff]/80" onClick={(e)=> handleGenreChange(e)} name="Ciencia ficción">Fiction Science</button>
+        <button className="hover:scale-105 transition-all hover:bg-[#4c60ff]/80" onClick={(e)=> handleGenreChange(e)} name="Zombies">Zombies</button>
+        <button className="hover:scale-105 transition-all hover:bg-[#4c60ff]/80" onClick={(e)=> handleGenreChange(e)} name="Suspenso">Suspense</button>
+        <button className="hover:scale-105 transition-all hover:bg-[#4c60ff]/80" onClick={(e)=> handleGenreChange(e)} name="Terror">Terror</button>
       </div>
     </section>
   )

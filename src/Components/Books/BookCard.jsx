@@ -5,10 +5,17 @@ import { useState } from "react"
 
 const BookCard = ({ book }) => {
   const [viewInfo, setViewInfo] = useState(false)
+
+  function ratingToEmojis(rating) {
+    const nums = rating.toString().split('.')
+    const emojis = '⭐'.repeat(nums[0])
+    return emojis
+  }
+
   // const { addItem } = useContext(bookContext)
   return (
     <article onClick={()=>setViewInfo(!viewInfo)} className={`gap-3 h-full w-72 flex flex-col justify-between items-center p-1 rounded-md ${!book.inList ? 'opacity-100' : 'opacity-10'}`}>
-      <picture className={viewInfo ? 'relative border-2 border-[#1A1241] rounded-3xl' : ''}>
+      <picture className={viewInfo ? 'relative border-2 border-[#1A1241] rounded-3xl' : 'border-2 border-inherit'}>
         <img className={viewInfo ? 'h-[336px] w-56 blur-sm backdrop-blur-2xl rounded-3xl' : 'shadow-xl h-[336px] w-56' } rounded-sm src={book.cover} alt="" />
       </picture>
 {viewInfo && (
@@ -24,8 +31,8 @@ const BookCard = ({ book }) => {
             {book.synopsis}
           </p>
         </div>
-        <div className="flex justify-center">
-          <p className="text-white w-40 font-bold mt-4 text-shadow">{book.rating}</p>
+        <div className="flex  ">
+          <p className="text-white w-40 font-bold mt-12 text-shadow">{ratingToEmojis(book.rating)}</p>
         </div>
         <div></div>
       </div>

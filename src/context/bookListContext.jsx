@@ -17,11 +17,9 @@ const bookContext = createContext({
 
 const libraryData = booksData.library.map(book => book.book)
 
-console.log(libraryData)
 
 export function BooksContextProvider(props) {
   const [library, setLibrary] = useLocalStorage('library', libraryData)
-  console.log(library)
   const [filters, setFilters] = useState(initialFilters)
   const [readList, setReadList] = useLocalStorage('readList', [])
   const [alreadyReadList, setAlreadyReadList] = useLocalStorage('alreadyReadList', [])
@@ -29,7 +27,9 @@ export function BooksContextProvider(props) {
 
 
   function updateFilters(filter, value) {
+    
     setFilters({ ...filters, [filter]: value })
+    if(filter === 'genre' && value === filters.genre) setFilters({ ...filters, genre: 'all' })
   }
 
   function addItem(book) {
@@ -76,7 +76,6 @@ export function BooksContextProvider(props) {
 
     return matchPages && matchGenre && matchSearch
   })
-  console.log(filteredLibrary)
 
   const numberOfBooksAvailable = booksAvailable(filteredLibrary, readList, alreadyReadList)
 

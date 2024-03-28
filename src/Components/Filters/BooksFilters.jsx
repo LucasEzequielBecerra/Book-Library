@@ -20,8 +20,8 @@ const BooksFilters = () => {
       <h2 className="text-[40px] mb-5 font-bold tracking-wider
       ">Find your favorite books </h2>
       <div className="flex justify-between items-center w-4/5"> 
-        <div className="flex items-center gap-4">
-          <input className="p-3 w-2/4 rounded-full text-[#F5F5F5] placeholder:text-[#F5F5F5] outline-none bg-[#4C60FF]" type="text" placeholder="Harry Potter, El principito ..." onChange={handleSearch} />
+        <div className="flex items-center gap-4 w-1/5">
+          <input className="p-3 w-full rounded-full text-[#F5F5F5] placeholder:text-[#F5F5F5] outline-none bg-[#4C60FF]" type="text" placeholder="Harry Potter, El principito ..." onChange={handleSearch} />
         </div>
         <div className="flex flex-col ">
             <label className="text-lg" htmlFor="filterPages">

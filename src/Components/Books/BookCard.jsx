@@ -1,5 +1,5 @@
-// import { useContext } from "react"
-// import bookContext from "../../context/bookListContext"
+import { useContext } from "react"
+import bookContext from "../../context/bookListContext"
 
 import { useState } from "react"
 
@@ -12,7 +12,7 @@ const BookCard = ({ book }) => {
     return emojis
   }
 
-  // const { addItem } = useContext(bookContext)
+  const { addItem, removeItem } = useContext(bookContext)
   return (
     <article onClick={()=>setViewInfo(!viewInfo)} className={`gap-3 h-full w-72 flex flex-col justify-between items-center p-1 rounded-md ${!book.inList ? 'opacity-100' : 'opacity-10'}`}>
       <picture className={viewInfo ? 'relative border-2 border-[#1A1241] rounded-3xl' : 'border-2 border-inherit'}>
@@ -33,6 +33,9 @@ const BookCard = ({ book }) => {
         </div>
         <div className="flex  ">
           <p className="text-white w-40 font-bold mt-12 text-shadow">{ratingToEmojis(book.rating)}</p>
+          <button onClick={addItem}>
+          <img src={''} alt="" />
+          </button>
         </div>
         <div></div>
       </div>
